@@ -19,3 +19,13 @@ class DeletePost extends PostEvents{
   @override
   List<Object?> get props => [post];
 }
+
+class SearchPost extends PostEvents{
+
+  final String searchKey;
+
+  const SearchPost({required this.searchKey});
+
+  @override
+  List<Object?> get props => [searchKey];
+}

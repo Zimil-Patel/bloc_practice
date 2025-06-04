@@ -49,6 +49,13 @@ class PostScreen extends StatelessWidget {
                     ),
 
                     // POST BODY
+                    subtitle: Text(
+                      post.body,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+
+                    // POST BODY
                     trailing: IconButton(
                       onPressed: () {
                         context.read<PostBloc>().add(DeletePost(post: post));

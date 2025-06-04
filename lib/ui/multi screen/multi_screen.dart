@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:bloc_practice/ui/image%20screen/image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/multi bloc/multi_bloc.dart';
@@ -93,6 +94,10 @@ class _MultiScreenState extends State<MultiScreen> {
           // Counter Screen taking remaining space
           const SizedBox(height: 16),
           Expanded(child: CounterScreen()),
+
+
+          // Image Screen
+          Expanded(child: ImageScreen()),
         ],
       ),
     );

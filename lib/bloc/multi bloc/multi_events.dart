@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class MultiEvent extends Equatable{
+abstract class MultiEvent extends Equatable{
 
   const MultiEvent();
 

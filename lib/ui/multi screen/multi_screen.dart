@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/multi bloc/multi_bloc.dart';
 import '../../bloc/multi bloc/multi_events.dart';
 import '../../bloc/multi bloc/multi_state.dart';
-import '../counter/counter_screen.dart';
+import '../counter screen/counter_screen.dart';
 
 class MultiScreen extends StatefulWidget {
   const MultiScreen({super.key});

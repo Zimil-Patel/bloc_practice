@@ -17,5 +17,5 @@ class SliderEvent extends MultiEvent{
   const SliderEvent({required this.slider});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [slider];
 }

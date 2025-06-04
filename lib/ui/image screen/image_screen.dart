@@ -42,21 +42,21 @@ class ImageScreen extends StatelessWidget {
                 color: Colors.grey,
               ),
               child:
-              BlocBuilder<ImageBloc, ImageState>(builder: (context, state) {
+                  BlocBuilder<ImageBloc, ImageState>(builder: (context, state) {
                 return state.file == null
                     ? Icon(
-                  Icons.note_add_rounded,
-                  color: Colors.white,
-                  size: 30,
-                )
+                        Icons.note_add_rounded,
+                        color: Colors.white,
+                        size: 30,
+                      )
                     : ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.file(
-                    File(
-                      state.file!.path.toString(),
-                    ),
-                  ),
-                );
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.file(
+                          File(
+                            state.file!.path.toString(),
+                          ),
+                        ),
+                      );
               }),
             ),
           ],
@@ -66,28 +66,73 @@ class ImageScreen extends StatelessWidget {
   }
 }
 
-
 _showImageOptions(BuildContext context) {
-  showModalBottomSheet(context: context, builder: (context) => Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      ElevatedButton(onPressed: (){
-        context.read<ImageBloc>().add(CaptureCameraImage());
-      }, child: Row(
+  showModalBottomSheet(
+    context: context,
+    builder: (_) => BlocProvider.value(
+      value: context.read<ImageBloc>(),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.camera),
-          Text('Camera'),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(14),
+            child: ElevatedButton(
+              onPressed: () {
+                context.read<ImageBloc>().add(CaptureCameraImage());
+                Navigator.pop(context);
+              },
+              style: ButtonStyle(
+                padding: WidgetStatePropertyAll(EdgeInsets.all(14)),
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.camera),
+                  Text('Camera'),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(14),
+            child: ElevatedButton(
+              onPressed: () {
+                context.read<ImageBloc>().add(PickGalleryImage());
+                Navigator.pop(context);
+              },
+              style: ButtonStyle(
+                padding: WidgetStatePropertyAll(EdgeInsets.all(14)),
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.photo_library_sharp),
+                  Text('Gallery'),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
         ],
-      ),),
-
-      ElevatedButton(onPressed: (){
-        context.read<ImageBloc>().add(PickGalleryImage());
-      }, child: Row(
-        children: [
-          Icon(Icons.photo_library_sharp),
-          Text('Gallery'),
-        ],
-      ),),
-    ],
-  ));
+      ),
+    ),
+  );
 }

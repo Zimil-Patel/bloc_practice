@@ -5,7 +5,9 @@ import 'package:bloc_practice/bloc/image%20bloc/image_bloc.dart';
 import 'package:bloc_practice/bloc/multi%20bloc/multi_bloc.dart';
 import 'package:bloc_practice/bloc/post%20bloc/post_bloc.dart';
 import 'package:bloc_practice/bloc/todo%20bloc/todo_bloc.dart';
+import 'package:bloc_practice/ui/counter%20screen/counter_screen.dart';
 import 'package:bloc_practice/ui/favourite%20screen/favourite_screen.dart';
+import 'package:bloc_practice/ui/multi%20screen/multi_screen.dart';
 import 'package:bloc_practice/ui/post_screen.dart';
 import 'package:bloc_practice/utils/image_utils.dart';
 import 'package:flutter/material.dart';
@@ -31,14 +33,13 @@ class _BlocAppState extends State<BlocApp> {
       theme: ThemeData.dark(),
       home: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => CounterBloc()),
           BlocProvider(create: (_) => MultiBloc()),
           BlocProvider(create: (_) => ImageBloc(ImageUtils())),
           BlocProvider(create: (_) => TodoBloc()),
           BlocProvider(create: (_) => FavouriteBloc(FavouriteState())),
           BlocProvider(create: (_) => PostBloc()),
         ],
-        child: PostScreen(),
+        child: MultiScreen(),
       ),
     );
   }

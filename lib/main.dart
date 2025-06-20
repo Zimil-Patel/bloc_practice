@@ -4,10 +4,12 @@ import 'package:bloc_practice/bloc/image%20bloc/image_bloc.dart';
 import 'package:bloc_practice/bloc/multi%20bloc/multi_bloc.dart';
 import 'package:bloc_practice/bloc/post%20bloc/post_bloc.dart';
 import 'package:bloc_practice/bloc/todo%20bloc/todo_bloc.dart';
-import 'package:bloc_practice/ui/login%20screen/login_screen.dart';
+import 'package:bloc_practice/config/routes/routes_name.dart';
 import 'package:bloc_practice/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'config/routes/routes.dart';
 
 
 void main() {
@@ -24,17 +26,18 @@ class BlocApp extends StatefulWidget {
 class _BlocAppState extends State<BlocApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => MultiBloc()),
-          BlocProvider(create: (_) => ImageBloc(ImageUtils())),
-          BlocProvider(create: (_) => TodoBloc()),
-          BlocProvider(create: (_) => FavouriteBloc(FavouriteState())),
-          BlocProvider(create: (_) => PostBloc()),
-        ],
-        child: LoginScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => MultiBloc()),
+        BlocProvider(create: (_) => ImageBloc(ImageUtils())),
+        BlocProvider(create: (_) => TodoBloc()),
+        BlocProvider(create: (_) => FavouriteBloc(FavouriteState())),
+        BlocProvider(create: (_) => PostBloc()),
+      ],
+      child: MaterialApp(
+        initialRoute: RouteName.splashScreen,
+        onGenerateRoute: Routes.generateRoutes,
+        theme: ThemeData.dark(),
       ),
     );
   }

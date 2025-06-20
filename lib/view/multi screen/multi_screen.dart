@@ -1,11 +1,11 @@
 import 'dart:developer';
-import 'package:bloc_practice/ui/image%20screen/image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/multi bloc/multi_bloc.dart';
 import '../../bloc/multi bloc/multi_events.dart';
 import '../../bloc/multi bloc/multi_state.dart';
 import '../counter screen/counter_screen.dart';
+import '../image screen/image_screen.dart';
 
 class MultiScreen extends StatefulWidget {
   const MultiScreen({super.key});
